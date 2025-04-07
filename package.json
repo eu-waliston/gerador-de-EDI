@@ -1,0 +1,23 @@
+{
+  "name": "gerador-de-edi",
+  "version": "1.0.0",
+  "description": "gerador de EDI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js",
+    "start": "src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "pdfkit": "^0.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

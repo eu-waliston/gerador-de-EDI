@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gerador de Nota EDI</title>
+  <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+  <h1>Preencha os dados da nota</h1>
+  <form action="/gerar" method="post">
+    <label>Tipo de nota:</label>
+    <select name="tipoNota">
+      <option value="venda">Venda</option>
+      <option value="compra">Compra</option>
+    </select><br>
+
+    <label>Número da Nota:</label>
+    <input type="text" name="numeroNota"><br>
+
+    <label>Data:</label>
+    <input type="text" name="dataNota" placeholder="DDMMYYYY"><br>
+
+    <h3>Destinatário:</h3>
+    <input name="destinatario[nome]" placeholder="Nome"><br>
+    <input name="destinatario[endereco]" placeholder="Endereço"><br>
+    <input name="destinatario[cidade]" placeholder="Cidade"><br>
+    <input name="destinatario[telefone]" placeholder="Telefone"><br>
+    <input name="destinatario[cpfCnpj]" placeholder="CPF/CNPJ"><br>
+
+    <h3>Itens:</h3>
+    <div id="itens"></div>
+    <button type="button" onclick="addItem()">+ Adicionar item</button><br><br>
+
+    <input type="hidden" name="itens" id="itensInput">
+    <button type="submit" onclick="prepareItens()">Gerar Nota</button>
+  </form>
+
+  <script>
+    const itens = [];
+
+    function addItem() {
+      const descricao = prompt('Descrição:');
+      const quantidade = prompt('Quantidade:');
+      const valorUnitario = prompt('Valor Unitário:');
+      if (descricao && quantidade && valorUnitario) {
+        itens.push({ descricao, quantidade, valorUnitario });
+        document.getElementById('itens').innerHTML += `<p>${quantidade}x ${descricao} @ ${valorUnitario}</p>`;
+      }
+    }
+
+    function prepareItens() {
+      document.getElementById('itensInput').value = JSON.stringify(itens);
+    }
+  </script>
+</body>
+</html>

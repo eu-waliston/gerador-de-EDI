@@ -1,0 +1,58 @@
+
+<link rel="stylesheet" href="/style.css">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Nota Gerada com Sucesso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 30px;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        pre {
+            background: #efefef;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✅ Nota EDI Gerada!</h1>
+
+        <!-- <pre><%= edi %></pre> -->
+
+        <form action="/nota/pdf" method="POST">
+            <input type="hidden" name="edi" value="<%= edi %>">
+            <button type="submit">📄 Baixar nota em PDF</button>
+        </form>
+    </div>
+</body>
+</html>
+
